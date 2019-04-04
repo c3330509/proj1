@@ -19,6 +19,8 @@ int main () {
     }
    // printf ("SENTENCE IN UPPER CASE IS\n", str[i]);
 
+    printf ("Hello world"); // only done to commit this program
+    
     return 0; 
     
 }

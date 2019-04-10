@@ -18,9 +18,39 @@ int main () {
         printf ("SENTENCE IN UPPER CASE IS  %d\n", n); 
     }
    // printf ("SENTENCE IN UPPER CASE IS\n", str[i]);
-
-    printf ("Hello world"); // only done to commit this program
     
     return 0; 
+    
+}
+
+void main () {
+    
+    int key, i; 
+    char x [30]; 
+    
+    clrscr(); 
+    printf ("ENTER THE MESSAGE HERE\n"); 
+    fgets(str, 80, stdin); //reads the whitespaces
+    
+    printf("ENTER THE KEY VALUE HERE\n"); 
+    scanf ("%d", &key); 
+    {
+        for (i = 0; i < strlen(x); i++); {
+            
+            if (x[i] == ' ') { } ; // if the input is a blankspace it will do nothing
+            
+            else {
+                
+                if (x[i] >= 'y') {
+                    x[i] = x[i] - 26; 
+                }
+                
+                x[i] = x[i] + key;
+                }
+        } 
+
+    }
+    
+    
     
 }

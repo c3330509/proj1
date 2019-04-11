@@ -1,35 +1,43 @@
 #include <stdio.h>
 #include <string.h>
 
-void rotationcipher (char* str, int key);
-
-int main () {
+int main () { 
     
-    char str[80];
-    int key;  
+    char str[80]; //encrypting a message
+    int key, i;  
+    
     printf ("ENTER THE MESSAGE HERE\n"); //ask the user for the plain text to encrypt.
     
+    // scanf ("%c", str);
     fgets (str, 80, stdin); // the text input is then stored in str variable
     
-    printf ("ENTER THE VALUE OF THE KEY HERE\n"); //user puts the key in
-    scanf ("%d", &key); //reads the value the user put in
+    printf ("ENTER THE KEY HERE\n"); //user puts the key in
+    scanf ("%d", &key); //reads the value the user input
     
-    printf ("THE CIPHERED TEXT IS\n"); 
-    
-    rotationcipher (str, key); 
-}
-
-void rotationcipher (char* str, int key) {
-    int i = 0; 
-    int cipherValue; 
-    char cipher; 
-    
-    while (str[i] != 0 && strlen(str) - 1 > i) {
-        cipherValue = (str[i] - 97 + key) % 26 + 97;
-        cipher = (cipherValue);
+    for(i = 0; (i < 80 && str[i] != 0); i++) {
         
-        printf ("%c", cipher);  // the cipher will be printed
-        i++; //incrementation 
+        str[i] = str[i] + key; 
+         
+        // printf ("%c\n %s\n--%d\n", str[i], str, i);  // the cipher will be printed
     }
-
+    
+   printf ("THE ENCRYPTED TEXT IS %s\n", str);
+    
+    char string[80]; //decrypting a message
+	
+	printf("ENTER THE MESSAGE HERE\n"); //ask the user to input the 
+	//message
+	
+	fgets(string, 80, stdin); // the text input is stored in the 
+	//string varibale
+	
+	printf("ENTER THE KEY\n"); //user inputs the key
+	scanf("%d", &key); //reads the value of the user input
+	
+	for(i = 0; (i < 80 && string[i] != 0) ; i++) {
+		
+		string[i] = string [i] - key; // decrypting the message
+		printf ("DECRYPTED MESSAGE %s\n", string);
+		// printf("%c", string[i]); 
+}
 }

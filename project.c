@@ -27,17 +27,17 @@ int main () {
 	
 	printf("ENTER THE MESSAGE HERE\n"); //ask the user to input the 
 	//message
-	
+	getchar();
+	//scanf("%s\n", string); 
 	fgets(string, 80, stdin); // the text input is stored in the 
 	//string varibale
-	
 	printf("ENTER THE KEY\n"); //user inputs the key
 	scanf("%d", &key); //reads the value of the user input
 	
 	for(i = 0; (i < 80 && string[i] != 0) ; i++) {
 		
 		string[i] = string [i] - key; // decrypting the message
-		printf ("DECRYPTED MESSAGE %s\n", string);
 		// printf("%c", string[i]); 
 }
+printf ("DECRYPTED MESSAGE %s\n", string); //prints the decrypted message
 }

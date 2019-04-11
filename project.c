@@ -1,56 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
+void rotationcipher (char* str, int key);
+
 int main () {
     
     char str[80];
-    int n, i; 
-    printf ("ENTER THE MESSAGE HERE\n");
-    fgets(str, 80, stdin); //does read the whitespaces instead of exiting after the whitespace for string. 
+    int key;  
+    printf ("ENTER THE MESSAGE HERE\n"); //ask the user for the plain text to encrypt.
     
-    n = strlen(str);
+    fgets (str, 80, stdin); // the text input is then stored in str variable
     
-    for(i=0; i < n; i++)
-    {
-        if (str[i] >= 97  && str [i] <= 122 )
-        str [i] = str [i] - 32;
-        
-        printf ("SENTENCE IN UPPER CASE IS  %d\n", n); 
-    }
-   // printf ("SENTENCE IN UPPER CASE IS\n", str[i]);
+    printf ("ENTER THE VALUE OF THE KEY HERE\n"); //user puts the key in
+    scanf ("%d", &key); //reads the value the user put in
     
-    return 0; 
+    printf ("THE CIPHERED TEXT IS\n"); 
     
+    rotationcipher (str, key); 
 }
 
-void main () {
+void rotationcipher (char* str, int key) {
+    int i = 0; 
+    int cipherValue; 
+    char cipher; 
     
-    int key, i; 
-    char x [30]; 
-    
-    clrscr(); 
-    printf ("ENTER THE MESSAGE HERE\n"); 
-    fgets(str, 80, stdin); //reads the whitespaces
-    
-    printf("ENTER THE KEY VALUE HERE\n"); 
-    scanf ("%d", &key); 
-    {
-        for (i = 0; i < strlen(x); i++); {
-            
-            if (x[i] == ' ') { } ; // if the input is a blankspace it will do nothing
-            
-            else {
-                
-                if (x[i] >= 'y') {
-                    x[i] = x[i] - 26; 
-                }
-                
-                x[i] = x[i] + key;
-                }
-        } 
-
+    while (str[i] != 0 && strlen(str) - 1 > i) {
+        cipherValue = (str[i] - 97 + key) % 26 + 97;
+        cipher = (cipherValue);
+        
+        printf ("%c", cipher);  // the cipher will be printed
+        i++; //incrementation 
     }
-    
-    
-    
+
 }

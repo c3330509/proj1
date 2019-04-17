@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+char *encryption (char[]); 
+char *decryption (char[]); 
+char alpha [26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+char key[26];
+
 int main () { 
     
     char str[1024]; //encrypting a message
@@ -41,15 +46,70 @@ int main () {
 }
 printf ("DECRYPTED MESSAGE %s\n", string); //prints the decrypted message
 
+int choice , flag = 0; 
+char *c_text;
+char msg[1024];
+   // printf ("ENTER THE PLAIN TEXT HERE:");
+   printf("SUBSTITUTION CIPHER\n");
+   printf("ENTER YOUR TEXT:\n");
+   scanf("%s", msg);
+fgets(msg, 1024, stdin);
+   //scanf("%[^]", msg);
+   printf("YOUR PLAIN TEXT IS: %s\n", msg); 
+   do {
+       printf("press 1 for encryption\n press 2 for decryption\n press 0 for exit\n"); 
+       scanf ("%d", &choice); 
+       switch (choice){
+           case 1: 
+            c_text = encryption (msg); 
+            flag = 1; 
+            break; 
+           case 2: 
+            if (flag == 1)
+                decryption (c_text); 
+            else 
+                printf("FIRST PERFORM EXCRYPTION PROCESS\n"); 
+                break; 
+            case 0: 
+                break;
+            default : 
+                printf ("PLEASE ENTER A VALID CHOICE\n"); 
+                break;
+       }  
+   } while (choice != 0);
+   } 
 
-
-char message = "txt message"; 
-char text [27] = {'d','w','c','q','f','e', 'h','o','y','x','g','u','v','t','i','z','j','n','m','l','a','b','p','r','s','k','space'); 
-// substituition cipher starts here
-
-char subciphencrypt = Encrypt (message, text); 
-printf ("ENTER THE MESSAGE HERE: %s\n", message);
-printf("ENCRYPTED MESSAGE IS: %s\n", subciphencrypt);
-char subciphdecrypt = Decrypt(subciphencrypt)
+char *encryption (char cipher_text []){
+int i, j; 
+   printf ("ENTER THE UNIQUE KEY OF 26 CHARACTERS FOR ENCRYPTION:");
+    scanf("%s", key); 
+    for (i =0; i <strlen(cipher_text); i++) {
+        for (j = 0; j< 26; j++) {
+            if (alpha[j] == cipher_text [i]) {
+                cipher_text[i] = key [j];
+                break;
+            }
+        }
+    }
+    printf ("YOUR ENCRYPTED MESSAGE IS: %s\n", cipher_text); 
+    return cipher_text; 
 }
 
+char *decryption (char cipher_text []){
+    int i, j;
+    char cipher [255]; 
+    strcpy (cipher, cipher_text); 
+    for (i =0; i <strlen(cipher_text); i++) {
+        for (j = 0; j< 26; j++) {
+            if (cipher[i] == key [j]){
+                cipher[i] = alpha[j];
+                break;
+            }
+    
+        }
+    }
+    
+    printf("DECRYPTED TEXT IS: %s\n", cipher);
+    
+    return 0;
+}

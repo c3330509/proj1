@@ -52,10 +52,11 @@ char msg[1024];
    // printf ("ENTER THE PLAIN TEXT HERE:");
    printf("SUBSTITUTION CIPHER\n");
    printf("ENTER YOUR TEXT:\n");
-   scanf("%s", msg);
-fgets(msg, 1024, stdin);
-   //scanf("%[^]", msg);
-   printf("YOUR PLAIN TEXT IS: %s\n", msg); 
+   getchar ();  
+   //scanf("%1024[^\n]%*c", msg);
+   //scanf("%s", msg);
+    fgets(msg, 1024, stdin);
+   printf("YOUR PLAIN TEXT IS: %s", msg); 
    do {
        printf("press 1 for encryption\n press 2 for decryption\n press 0 for exit\n"); 
        scanf ("%d", &choice); 

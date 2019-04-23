@@ -11,106 +11,116 @@ int main () {
     char str[1024]; //encrypting a message
     int key, i;  
     
-    printf ("ENTER THE MESSAGE HERE\n"); //ask the user for the plain text to encrypt.
+    printf ("--ROTATION CIPHER--\n"); //title of cipher that is being performed
     
-    // scanf ("%c", str);
+    printf ("Enter the original message here:\n"); //ask the user for the plain text to encrypt.
+    
     fgets (str, 1024, stdin); // the text input is then stored in str variable
     
-    printf ("ENTER THE KEY HERE\n"); //user puts the key in
+    printf ("Enter the key here: \n"); //user puts the key in
+    
     scanf ("%d", &key); //reads the value the user input
     
     for(i = 0; (i < 1024 && str[i] != 0); i++) {
-        
         str[i] = str[i] + key; 
-         
-        // printf ("%c\n %s\n--%d\n", str[i], str, i);  // the cipher will be printed
     }
-    
-   printf ("THE ENCRYPTED TEXT IS %s\n", str);
-    
-    char string[1024]; //the code for decrypting a message starts here
+   printf ("The encrypted text is: %s\n", str); // the cipher will be printed
+   
+   char string[1024]; //the code for decrypting a message starts here
 	
-	printf("ENTER THE MESSAGE HERE\n"); //ask the user to input the 
-	//message
-	getchar();
-	//scanf("%s\n", string); 
-	fgets(string, 1024, stdin); // the text input is stored in the 
-	//string varibale
-	printf("ENTER THE KEY\n"); //user inputs the key
-	scanf("%d", &key); //reads the value of the user input
+   printf("Enter the cipher text here: \n"); //ask the user to input the message
 	
-	for(i = 0; (i < 1024 && string[i] != 0) ; i++) {
-		
-		string[i] = string [i] - key; // decrypting the message
-		// printf("%c", string[i]); 
-}
-printf ("DECRYPTED MESSAGE %s\n", string); //prints the decrypted message
+   getchar(); //to allow the compiler to ignore new line ('enter') by the programmer.
+	
+   fgets(string, 1024, stdin); // the text input is stored in the string varible
 
-int choice , flag = 0; 
-char *c_text;
+   printf("Enter the key here:\n"); //user choose then inputs the key
+	
+   scanf("%d", &key); //reads the value of the user input	
+	
+   for(i = 0; (i < 1024 && string[i] != 0) ; i++) {
+       
+		string[i] = string [i] - key; // decrypting the message
+}
+
+printf ("The decrypted message is: %s\n", string); //prints the decrypted message
+
+int choice , flag = 0; // identifying variables. 
+char *cipheredtext;
 char msg[1024];
-   // printf ("ENTER THE PLAIN TEXT HERE:");
-   printf("SUBSTITUTION CIPHER\n");
-   printf("ENTER YOUR TEXT:\n");
-   getchar ();  
-   //scanf("%1024[^\n]%*c", msg);
-   //scanf("%s", msg);
-    fgets(msg, 1024, stdin);
-   printf("YOUR PLAIN TEXT IS: %s", msg); 
-   do {
-       printf("press 1 for encryption\n press 2 for decryption\n press 0 for exit\n"); 
+
+   printf("--SUBSTITUTION CIPHER--\n"); //substitution cipher begins here
+   
+   printf("Enter your original text here: \n"); //ask the user to input the message 
+   
+   getchar (); 
+
+   fgets(msg, 1024, stdin); //stores the message in stdin
+   
+   printf("The original message is: %s", msg); // prints the original message
+   
+   do { //allows the user to choose whether they want to perform encryption or decryption.
+       
+       printf("press 1 for encryption\npress 2 for decryption\npress 0 for exit\n"); 
+       
        scanf ("%d", &choice); 
        switch (choice){
            case 1: 
-            c_text = encryption (msg); 
+            cipheredtext = encryption (msg); 
             flag = 1; 
             break; 
+           
            case 2: 
             if (flag == 1)
-                decryption (c_text); 
+                decryption (cipheredtext); 
             else 
                 printf("FIRST PERFORM EXCRYPTION PROCESS\n"); 
                 break; 
-            case 0: 
-                break;
+            
             default : 
                 printf ("PLEASE ENTER A VALID CHOICE\n"); 
                 break;
-       }  
-   } while (choice != 0);
-   } 
-
-char *encryption (char cipher_text []){
-int i, j; 
-   printf ("ENTER THE UNIQUE KEY OF 26 CHARACTERS FOR ENCRYPTION:");
-    scanf("%s", key); 
-    for (i =0; i <strlen(cipher_text); i++) {
-        for (j = 0; j< 26; j++) {
-            if (alpha[j] == cipher_text [i]) {
-                cipher_text[i] = key [j];
-                break;
             }
+        } while (choice != 0);
+       
+   }
+
+char *encryption (char cipher_text []){ //function for encryption process
+int i, j; // varibable identification
+   
+   printf ("Enter the unique key of 26 characters here:"); //the 26 character is decided by the user
+   
+   scanf("%s", key); // scans the input
+   
+   for (i =0; i <strlen(cipher_text); i++) {
+     for (j = 0; j< 26; j++) {
+        if (alpha[j] == cipher_text [i]) { 
+            cipher_text[i] = key [j];
+            break;
         }
     }
-    printf ("YOUR ENCRYPTED MESSAGE IS: %s\n", cipher_text); 
+}
+    printf ("The encrypted text is: %s\n", cipher_text); //prints the encrypted text for substitution cipher
     return cipher_text; 
 }
 
 char *decryption (char cipher_text []){
+    
     int i, j;
+    
     char cipher [255]; 
+    
     strcpy (cipher, cipher_text); 
+    
     for (i =0; i <strlen(cipher_text); i++) {
         for (j = 0; j< 26; j++) {
             if (cipher[i] == key [j]){
                 cipher[i] = alpha[j];
                 break;
             }
-    
         }
     }
     
-    printf("DECRYPTED TEXT IS: %s\n", cipher);
-    
+    printf("The decrypted text is: %s", cipher);
     return 0;
 }

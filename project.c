@@ -9,7 +9,7 @@ int main () {
     char lead[26]; 
     char alpha [26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int key, i, j;
-    //printf ("--ROTATION CIPHER--\n"); //title of cipher that is being performed
+    
     int choose;
     printf("press 1 to choose encryption for rotation cipher\n"); 
     printf("press 2 to choose decryption for rotation cipher\n");

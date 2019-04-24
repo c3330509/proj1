@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-
-char *encryption (char[]); 
-char *decryption (char[]); 
-char alpha [26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-char key[26];
-
+ 
 int main () {
     char str[1024]; //encrypting a message (rotation)
     char string[1024]; //decrypting a message (rotation)
     char msg[1024]; // encrypting a message (substitution)
     char message[1024]; // decrypting a message (substitution)  
-    char lead[1024]; 
+    char lead[26]; 
+    char alpha [26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int key, i, j;
     //printf ("--ROTATION CIPHER--\n"); //title of cipher that is being performed
     int choose;
@@ -79,4 +75,5 @@ int main () {
             default: 
                  printf ("PLEASE ENTER A VALID CHOICE\n"); 
                  break; 
+}
 }
